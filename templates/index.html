@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+  font-family: Calibri, Helvetica, sans-serif;
+  background-color: pink;
+}
+.container {
+    padding: 50px;
+  background-color: lightblue;
+}
+
+input[type=text], textarea {
+  width: 50%;
+  padding: 9px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus {
+  background-color: #FFF59D;
+  outline: none;
+}
+ div {
+            padding: 10px 0;
+         }
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.predictbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+  opacity: 0.9;
+}
+.registerbtn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<form action="{{ url_for('predict')}}" method="post">
+  <div class="container">
+  <center>  <h1>Telco Customer Churn Prediction</h1> </center>
+  <hr>
+
+<label> <b>Gender: </b></label>
+<input type="radio" value="male" name="gender" checked> Male
+<input type="radio" value="female" name="gender"> Female
+<br><br>
+<label> <b>Senior Citizen: </b></label>
+<input type="radio" value="no" name="senior" checked> No
+<input type="radio" value="yes" name="senior"> Yes
+<br><br>
+<label> <b>Partner: </b></label>
+<input type="radio" value="no" name="partner" checked> No
+<input type="radio" value="yes" name="partner"> Yes
+<br><br>
+<label> <b>Dependents: </b></label>
+<input type="radio" value="no" name="dependents" checked> No
+<input type="radio" value="yes" name="dependents"> Yes
+<br><br>
+<label> <b>Tenure: </b></label>
+<input type="text" name="tenure" placeholder= "Enter the tenure period interms of years" size="15" required />
+<br>
+<label> <b>Phone Service: </b></label>
+<input type="radio" value="no" name="phoneserv" checked> No
+<input type="radio" value="yes" name="phoneserv"> Yes
+<br><br>
+<label> <b>Multiple Lines: </b></label>
+<input type="radio" value="no" name="multilines" checked> No
+<input type="radio" value="yes" name="multilines"> Yes
+<br><br>
+<label> <b>Online Security: </b></label>
+<input type="radio" value="no" name="onlinesec" checked> No
+<input type="radio" value="yes" name="onlinesec"> Yes
+<br><br>
+<label> <b>Online Backup: </b></label>
+<input type="radio" value="no" name="onlinebac" checked> No
+<input type="radio" value="yes" name="onlinebac"> Yes
+<br><br>
+<label> <b>Device Protection: </b></label>
+<input type="radio" value="no" name="devicepro" checked> No
+<input type="radio" value="yes" name="devicepro"> Yes
+<br><br>
+<label> <b>Tech Support: </b></label>
+<input type="radio" value="no" name="techsup" checked> No
+<input type="radio" value="yes" name="techsup"> Yes
+<br><br>
+<label> <b>Streaming TV: </b></label>
+<input type="radio" value="no" name="strtv" checked> No
+<input type="radio" value="yes" name="strtv"> Yes
+<br><br>
+<label> <b>Streaming Movies: </b></label>
+<input type="radio" value="no" name="strmvs" checked> No
+<input type="radio" value="yes" name="strmvs"> Yes
+<br><br>
+<label> <b>Paperless Billing: </b></label>
+<input type="radio" value="no" name="paperless" checked> No
+<input type="radio" value="yes" name="paperless"> Yes
+<br><br>
+<label> <b>Monthly Charges: </b></label>
+<input type="text" name="mb" placeholder= "Enter the monthly charges" size="15" required />
+<br>
+<label> <b>Total Charges: </b></label>
+<input type="text" name="tb" placeholder= "Enter the total charges" size="15" required />
+<br>
+<label>
+<b>Internet Service:</b>
+</label>
+<select name="intserv">
+<option value="menu">Select</option>
+<option value="dsl">DSL</option>
+<option value="fiber">Fiber Optic</option>
+<option value="no">No</option>
+</select>
+<br><br>
+<label>
+<b>Contract:</b>
+</label>
+<select name="contract">
+<option value="menu">Select</option>
+<option value="mtom">Month-to-Month</option>
+<option value="oy">One Year</option>
+<option value="ty">Two Years</option>
+</select>
+<br><br>
+<label>
+<b>Payment Method:</b>
+</label>
+<select name="pm">
+<option value="menu">Select</option>
+<option value="bt">Bank Transfer</option>
+<option value="cc">Credit Card</option>
+<option value="ec">Electronic Check</option>
+<option value="mc">Mailed Check</option>
+</select>
+<br><br>
+    <button id="sub" type="submit" class="predictbtn">Predict</button>
+    <br><br><h3>{{ prediction_text }}</h3>
+</div>
+</form>
+
+</body>
+</html>
